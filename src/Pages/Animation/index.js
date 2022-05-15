@@ -1,7 +1,6 @@
-import { Container, Row, Col } from "react-bootstrap";
-import './Bolg.Module.css';
+import { Container, Row, Col } from "react-bootstrap"; 
 
-const Blogs = ()=> {
+const Animation = ()=> {
     return (
         <section className='blog'> 
             <Container >
@@ -15,4 +14,4 @@ const Blogs = ()=> {
     )
 }
 
-export default Blogs;
+export default Animation;

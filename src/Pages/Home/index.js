@@ -1,25 +1,28 @@
+import { Col, Container, Row } from 'react-bootstrap';
 import BannerImage from '../../Assets/Images/home-main.svg';
+import { NavLink } from 'react-router-dom';
+import './Banner.Module.css';
 
 const Home = ()=> {
     return (
         <section className='banner'> 
-            <div className='container'>
-                <div className='row align-items-center'>
-                    <div className='col-md-7' >
+            <Container >
+                <Row className='align-items-center'>
+                    <Col md='7' >
                         <div className='banner__content'>
-                            <h1 className='title'>Doing it all, in all new ways.</h1>
-                            <p>Experience remarkable WordPress products with a new level of power, beauty, and human-centered designs. Think you know WordPress products? Think deeper!</p>
-                            <button>Scroll down</button>
+                            <h1 className='title'>Wellcome to my Site.</h1>
+                            <p>I'm Sabbir.And i'm Font-End-Devoloper.</p>
+                            <NavLink to='/about' className='btn' >Read More</NavLink>
                         </div>
-                    </div>
+                    </Col>
 
-                    <div className='col-md-5' >
+                    <Col md='5' >
                         <div className='banner__media'>
                             <img src={BannerImage} alt='Banner' className='img-fluid' />
                         </div>
-                    </div>
-                </div>
-            </div>  
+                    </Col>
+                </Row>
+            </Container>  
         </section>
     )
 }

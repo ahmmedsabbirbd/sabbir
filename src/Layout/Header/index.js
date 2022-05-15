@@ -6,9 +6,11 @@ import './Header.Module.css';
 import Breadcrumb from './Breadcrumb';
 
 const Header = ()=> {
-	const [ screenWidth, setScreenWidth ] = useState( window.innerWidth );
-	const [ mobileMenuShow, setMobileMenuShow ] = useState( false );
-	window.addEventListener('resize', ()=> { setScreenWidth( window.innerWidth ); setMobileMenuShow( false ) } ); 
+	const [ headerSticky, setHeaderSticky ] = useState(false); 
+	const [ screenWidth, setScreenWidth ] = useState(window.innerWidth);
+	const [ mobileMenuShow, setMobileMenuShow ] = useState(false);
+	window.addEventListener('resize', ()=> { setScreenWidth(window.innerWidth); setMobileMenuShow(false) }); 
+	window.addEventListener('scroll', ()=> (window.scrollY > 0) ? setHeaderSticky(true) : setHeaderSticky(false) ); 
 
 	const Toggler = <>
 		<li className='mobile-navbar-toggler'>
@@ -25,7 +27,7 @@ const Header = ()=> {
 		<li><NavLink to='/about'>About</NavLink></li>
 		<li><NavLink to='/blogs'>Worked</NavLink></li>
 		<li><NavLink to='/contact'>Contact</NavLink></li>
-		<li><NavLink to='/animation/eid-mubarak'>Animation</NavLink></li>
+		<li><NavLink to='/animation'>Animation</NavLink></li>
 		</>;
 
 	const MobileMenu = <> 
@@ -41,7 +43,7 @@ const Header = ()=> {
     return (
         <>
 		{ mobileMenuShow && MobileMenu }
-		<header className='header'>
+		<header className={`header ${headerSticky ? 'sticky' : ''}`}>
 			<div className='navbar navbar-expand'>
 				<Container className='d-flex align-items-center justify-content-between' >
 					<div className='navbar-header d-flex align-items-center'>
@@ -60,55 +62,10 @@ const Header = ()=> {
 				</Container>
 			</div>
 		</header> 
+		<div className="header-gutter"></div>
 		<Breadcrumb />
 		</>
     )
 }
 
 export default Header;
-
-
-
-// export function useWindowDimensions() {
-
-//   const hasWindow = typeof window !== 'undefined';
-
-//   function getWindowDimensions() {
-//     const width = hasWindow ? window.innerWidth : null;
-//     const height = hasWindow ? window.innerHeight : null;
-//     return {
-//       width,
-//       height,
-//     };
-//   }
-
-//   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-//   useEffect(() => {
-//     if (hasWindow) {
-//       function handleResize() {
-//         setWindowDimensions(getWindowDimensions());
-//       }
-
-//       window.addEventListener('resize', handleResize);
-//       return () => window.removeEventListener('resize', handleResize);
-//     }
-//   }, [hasWindow]);
-
-//   return windowDimensions;
-// }
-
-// // yourComponent.js
-
-// import useWindowDimensions from './hooks/useWindowDimensions';
-
-// const Component = () => {
-//   const { height, width } = useWindowDimensions();
-//   /* you can also use default values or alias to use only one prop: */
-//   // const { height: windowHeight = 480 } useWindowDimensions();
-
-//   return (
-//     <div>
-//       width: {width} ~ height: {height}
-//     </div>
-//   );

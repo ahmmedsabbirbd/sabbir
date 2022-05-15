@@ -1,12 +1,13 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap"; 
 
 const Error = ()=> {
     return (
-        <section className='error'> 
+        <section style={{ 'padding': '50px 0'}}> 
             <Container >
                 <Row>
-                    <Col> 
+                    <Col>
                         <h1>Error!..</h1>
+                        <p>Please check your url</p>
                     </Col> 
                 </Row>
             </Container>  
