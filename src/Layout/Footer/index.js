@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Logo from '../../Assets/Images/logo.svg';
 import { Col, Container, Row } from 'react-bootstrap';
 import './Footer.Module.css'; 
@@ -23,8 +23,8 @@ const Footer = ()=> {
                             </div>
 
                             <ul className='footer__socail-media'>
-                                <li><a className='icon-facebook' href='https://www.facebook.com/ahmmedsabbirbd' target='_blank'></a></li>
-                                <li><a className='icon-tiktok' href='https://tiktok.com/@ahmmedsabbirbd' target='_blank'></a></li>
+                                <li><Link to='https://www.facebook.com/ahmmedsabbirbd' className='icon-facebook'  target='_blank'></Link></li>
+                                <li><Link to='https://tiktok.com/@ahmmedsabbirbd' className='icon-tiktok'   target='_blank'></Link></li>
                             </ul>                
                         </div>  
                     </Col>
@@ -35,14 +35,14 @@ const Footer = ()=> {
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/animation'>Animation</NavLink></li>
-                                        <li><a>Eid</a></li>
-                                        <li><a>Birthday</a></li> 
-                                        <li><a>Valentine's Day</a></li> 
-                                        <li><a>Mother's Day</a></li> 
-                                        <li><a>Fother's Day</a></li> 
-                                        <li><a>Animation 1</a></li> 
-                                        <li><a>Fother's 2</a></li> 
-                                        <li><a>Fother's 3</a></li> 
+                                        <li><Link to='/animation'>Eid</Link></li>
+                                        <li><Link to='/animation'>Birthday</Link></li> 
+                                        <li><Link to='/animation'>Valentine's Day</Link></li> 
+                                        <li><Link to='/animation'>Mother's Day</Link></li> 
+                                        <li><Link to='/animation'>Fother's Day</Link></li> 
+                                        <li><Link to='/animation'>Animation 1</Link></li> 
+                                        <li><Link to='/animation'>Fother's 2</Link></li> 
+                                        <li><Link to='/animation'>Fother's 3</Link></li> 
                                     </ul>
                                 </div>
                             </Col> 
@@ -51,14 +51,14 @@ const Footer = ()=> {
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/blogs'>Worked</NavLink></li>
-                                        <li><a>Worked 1</a></li>
-                                        <li><a>Worked 2</a></li> 
-                                        <li><a>Worked 3</a></li> 
-                                        <li><a>Worked 4</a></li> 
-                                        <li><a>Worked 5</a></li> 
-                                        <li><a>Worked 6</a></li> 
-                                        <li><a>Worked 7</a></li> 
-                                        <li><a>Worked 8</a></li> 
+                                        <li><Link to='/blogs'>Worked 1</Link></li>
+                                        <li><Link to='/blogs'>Worked 2</Link></li> 
+                                        <li><Link to='/blogs'>Worked 3</Link></li> 
+                                        <li><Link to='/blogs'>Worked 4</Link></li> 
+                                        <li><Link to='/blogs'>Worked 5</Link></li> 
+                                        <li><Link to='/blogs'>Worked 6</Link></li> 
+                                        <li><Link to='/blogs'>Worked 7</Link></li> 
+                                        <li><Link to='/blogs'>Worked 8</Link></li> 
                                     </ul>
                                 </div>
                             </Col> 
@@ -67,14 +67,14 @@ const Footer = ()=> {
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/about'>About</NavLink></li>
-                                        <li><a>About 1</a></li>
-                                        <li><a>About 2</a></li> 
-                                        <li><a>About 3</a></li> 
-                                        <li><a>About 4</a></li> 
-                                        <li><a>About 5</a></li> 
-                                        <li><a>About 6</a></li> 
-                                        <li><a>About 7</a></li> 
-                                        <li><a>About 8</a></li> 
+                                        <li><Link to='/about'>About 1</Link></li>
+                                        <li><Link to='/about'>About 2</Link></li> 
+                                        <li><Link to='/about'>About 3</Link></li> 
+                                        <li><Link to='/about'>About 4</Link></li> 
+                                        <li><Link to='/about'>About 5</Link></li> 
+                                        <li><Link to='/about'>About 6</Link></li> 
+                                        <li><Link to='/about'>About 7</Link></li> 
+                                        <li><Link to='/about'>About 8</Link></li> 
                                     </ul>
                                 </div>
                             </Col> 
