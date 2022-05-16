@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import './Bolg.Module.css';
 
 const Blogs = ()=> {
     return (

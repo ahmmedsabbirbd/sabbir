@@ -6,15 +6,16 @@ import Error from '../Pages/Error';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Blogs from "../Pages/Blog";
 import Contact from "../Pages/Contact";
-import '../style.css';
+import '../Sass/style.scss';
 import Footer from "../Layout/Footer"; 
 import Animation from "../Pages/Animation";
+import EidMubarak from "../Pages/Animation/EidMubarak"; 
 
 const CustomRoutes = ()=> {
     return (
         <div className="app">
             <BrowserRouter> 
-                <Header />
+                <Header /> 
                 <Routes>
                     <Route path="/" element={ <Home />} />
                     <Route path="*" element={ <Error />} />
@@ -22,6 +23,7 @@ const CustomRoutes = ()=> {
                     <Route path="/blogs" element={ <Blogs />} />
                     <Route path="/contact" element={ <Contact />} />
                     <Route path="/animation" element={ <Animation />} />
+                    <Route path="/animation/eid-mubarak" element={ <EidMubarak />} />
                 </Routes>
                 <Footer />
             </BrowserRouter> 

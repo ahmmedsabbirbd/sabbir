@@ -1,7 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
 import Logo from '../../Assets/Images/logo.svg';
-import { Col, Container, Row } from 'react-bootstrap';
-import './Footer.Module.css'; 
+import { Col, Container, Row } from 'react-bootstrap'; 
 
 const Footer = ()=> {  
     return ( 

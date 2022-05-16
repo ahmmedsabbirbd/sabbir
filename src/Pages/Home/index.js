@@ -1,7 +1,6 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import BannerImage from '../../Assets/Images/home-main.svg';
-import { NavLink } from 'react-router-dom';
-import './Banner.Module.css';
+import { NavLink } from 'react-router-dom'; 
 
 const Home = ()=> {
     return (

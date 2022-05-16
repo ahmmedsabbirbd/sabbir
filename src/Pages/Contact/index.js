@@ -1,5 +1,4 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import './Contact.Module.css';
 
 const Contact = ()=> {
     return (
