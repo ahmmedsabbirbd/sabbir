@@ -8,8 +8,14 @@ const Header = ()=> {
 	const [ headerSticky, setHeaderSticky ] = useState(false); 
 	const [ screenWidth, setScreenWidth ] = useState(window.innerWidth);
 	const [ mobileMenuShow, setMobileMenuShow ] = useState(false);
-	window.addEventListener('resize', ()=> { setScreenWidth(window.innerWidth); setMobileMenuShow(false) }); 
-	window.addEventListener('scroll', ()=> (window.scrollY > 0) ? setHeaderSticky(true) : setHeaderSticky(false) ); 
+	window.addEventListener('resize', ()=> { setScreenWidth(window.innerWidth); setMobileMenuShow(false) });
+
+	const Onscroll = ()=> {
+		(window.scrollY > 0) ? setHeaderSticky(true) : setHeaderSticky(false); 
+		(document.body.scroll) && setMobileMenuShow(false); 
+	}
+
+	window.addEventListener('scroll', ()=> Onscroll() ); 
 
 	const Toggler = <>
 		<li className='mobile-navbar-toggler'>
@@ -22,11 +28,11 @@ const Header = ()=> {
 		</>;
 
 	const NavItem = <>
-		<li><NavLink to='/'>Home</NavLink></li>
-		<li><NavLink to='/about'>About</NavLink></li>
-		<li><NavLink to='/blogs'>Worked</NavLink></li>
-		<li><NavLink to='/contact'>Contact</NavLink></li>
-		<li><NavLink to='/animation'>Animation</NavLink></li>
+		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/'>Home</NavLink></li>
+		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/about'>About</NavLink></li>
+		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/blogs'>Worked</NavLink></li>
+		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/contact'>Contact</NavLink></li>
+		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/animation'>Animation</NavLink></li>
 		</>;
 
 	const MobileMenu = <> 
@@ -42,7 +48,7 @@ const Header = ()=> {
     return (
         <>
 		{ mobileMenuShow && MobileMenu }
-		<header className={`header ${headerSticky ? 'sticky' : ''}`}>
+		<header className={`header transparent ${headerSticky ? 'sticky' : ''}`}>
 			<div className='navbar navbar-expand'>
 				<Container className='d-flex align-items-center justify-content-between' >
 					<div className='navbar-header d-flex align-items-center'>

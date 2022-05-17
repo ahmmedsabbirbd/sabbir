@@ -1,0 +1,90 @@
+$social-colors: (
+	'facebook': #3D5CA9,
+	'gplus': #E33E2B,
+	'instagram': #DC3C8B,
+	'linkedin': #0A66C2,
+	'pinterest': #EB274D,
+	'qq': #FEBF1B,
+	'quora': #b92b27,
+	'reddit-alien': #FF5600,
+	'rss': #F16522,
+	'sina-weibo': #E6162D,
+	'snapchat-ghost': #FFFC00,
+	'telegram': #0088cc,
+	'twitter': #1DA1F2,
+	'vkontakte': #5181b8,
+	'wechat': #7bb32e,
+	'whatsapp': #25D366,
+	'tiktok': #ff0050,
+	'youtube': #FF0000,
+	'clone': #E77527,
+);
+
+.coverbg {
+    @include coverbg;
+}
+
+.mx-auto {
+	margin: 0 auto;
+}
+
+.align-center {
+	@include align-center;
+
+	&:before, &:after {
+    	content: none;
+    }
+}
+
+.align-center-h {
+	@include align-center('horizontal');
+
+	&:before, &:after {
+    	content: none;
+    }
+}
+
+.align-center-v {
+	height: 100%;
+	@include align-center('vertical');
+
+	&:before, &:after {
+    	content: none;
+    }
+}
+
+.justify-content-center {
+	-webkit-box-pack: center!important;
+	-webkit-justify-content: center!important;
+	-ms-flex-pack: center!important;
+	justify-content: center!important;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    &:before, &:after {
+    	content: none;
+    }
+}
+
+.eq-height {
+	display: -webkit-box;
+	display: -moz-flexbox;
+	display: -ms-flexbox;
+	display: -o-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+
+	&:before, &:after {
+    	content: none;
+    }
+}

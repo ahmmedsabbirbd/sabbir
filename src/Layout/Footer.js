@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import Logo from '../../Assets/Images/logo.svg';
+import Logo from './../Assets/Images/logo.svg';
 import { Col, Container, Row } from 'react-bootstrap'; 
 
 const Footer = ()=> {  
@@ -34,14 +34,7 @@ const Footer = ()=> {
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/animation'>Animation</NavLink></li>
-                                        <li><Link to='/animation'>Eid</Link></li>
-                                        <li><Link to='/animation'>Birthday</Link></li> 
-                                        <li><Link to='/animation'>Valentine's Day</Link></li> 
-                                        <li><Link to='/animation'>Mother's Day</Link></li> 
-                                        <li><Link to='/animation'>Fother's Day</Link></li> 
-                                        <li><Link to='/animation'>Animation 1</Link></li> 
-                                        <li><Link to='/animation'>Fother's 2</Link></li> 
-                                        <li><Link to='/animation'>Fother's 3</Link></li> 
+                                        <li><Link to='/animation/eid-mubarak'>Eid Mubarak</Link></li>
                                     </ul>
                                 </div>
                             </Col> 
@@ -50,14 +43,6 @@ const Footer = ()=> {
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/blogs'>Worked</NavLink></li>
-                                        <li><Link to='/blogs'>Worked 1</Link></li>
-                                        <li><Link to='/blogs'>Worked 2</Link></li> 
-                                        <li><Link to='/blogs'>Worked 3</Link></li> 
-                                        <li><Link to='/blogs'>Worked 4</Link></li> 
-                                        <li><Link to='/blogs'>Worked 5</Link></li> 
-                                        <li><Link to='/blogs'>Worked 6</Link></li> 
-                                        <li><Link to='/blogs'>Worked 7</Link></li> 
-                                        <li><Link to='/blogs'>Worked 8</Link></li> 
                                     </ul>
                                 </div>
                             </Col> 
@@ -66,14 +51,6 @@ const Footer = ()=> {
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/about'>About</NavLink></li>
-                                        <li><Link to='/about'>About 1</Link></li>
-                                        <li><Link to='/about'>About 2</Link></li> 
-                                        <li><Link to='/about'>About 3</Link></li> 
-                                        <li><Link to='/about'>About 4</Link></li> 
-                                        <li><Link to='/about'>About 5</Link></li> 
-                                        <li><Link to='/about'>About 6</Link></li> 
-                                        <li><Link to='/about'>About 7</Link></li> 
-                                        <li><Link to='/about'>About 8</Link></li> 
                                     </ul>
                                 </div>
                             </Col> 

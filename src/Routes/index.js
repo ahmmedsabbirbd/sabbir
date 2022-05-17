@@ -10,11 +10,14 @@ import '../Sass/style.scss';
 import Footer from "../Layout/Footer"; 
 import Animation from "../Pages/Animation";
 import EidMubarak from "../Pages/Animation/EidMubarak"; 
+import ScrollToTop from "../Components/ScrollToTop";
 
-const CustomRoutes = ()=> {
+const CustomRoutes = ()=> { 
     return (
         <div className="app">
             <BrowserRouter> 
+                <ScrollToTop />
+                {}
                 <Header /> 
                 <Routes>
                     <Route path="/" element={ <Home />} />
@@ -23,7 +26,7 @@ const CustomRoutes = ()=> {
                     <Route path="/blogs" element={ <Blogs />} />
                     <Route path="/contact" element={ <Contact />} />
                     <Route path="/animation" element={ <Animation />} />
-                    <Route path="/animation/eid-mubarak" element={ <EidMubarak />} />
+                    <Route path="/animation/eid-mubarak" element={ <EidMubarak />} /> 
                 </Routes>
                 <Footer />
             </BrowserRouter> 
