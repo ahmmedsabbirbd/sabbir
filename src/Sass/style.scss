@@ -385,7 +385,7 @@ HEADER STYLES
 }
 
 // BreadCrumb
-.breadcrumb {
+.breadcrumb { 
     margin: 0;
     color: white;
     padding: 10px 25px;
@@ -395,12 +395,69 @@ HEADER STYLES
 }
 
 /***********************************
+HOME STYLES
+***********************************/
+.banner {
+
+    &__content {
+
+        .btn {
+            margin-top: 15px;
+        }
+    }
+}
+
+/***********************************
 ANIMATION STYLES
 ***********************************/
 .is-animation-page {
 
-    .header, .header-gutter, .breadcrumb-wrapper, .footer, .mobile-header {
+    .header, .header-gutter, .breadcrumb-wraper, .footer, .mobile-header {
         display: none !important;
+    }
+
+    .btn {
+        font-size: 16px;
+        line-height: 26px;
+        padding: 5px 10px;
+    }
+
+    .eid-mubarak {
+        padding: 15px 15px 0;
+
+        .btn-group {
+            right: 15px;
+            bottom: 15px;
+            position: absolute;
+        }
+
+        .name {
+            right: 15px;
+            bottom: 46px;
+            position: absolute;
+        }
+    }
+}
+
+.animation {
+
+    &-item {
+
+        p {
+            margin: 0;
+            color: $black;
+        }
+
+        &:hover {
+            
+            .title {
+                background-image: $hbgimage;
+            }
+
+            p {
+                color: #000;
+            }
+        }
     }
 }
 
@@ -504,14 +561,8 @@ FOOTER STYLES
             li {
                 margin-bottom: 10px;
         
-                &.title a {
-                    font-size: 20px;
-                    font-weight: 700;
-                    line-height: 30px;
-                    display: inline-block;
-                    background-clip: text;
-                    background-image: $bgimage;
-                    -webkit-text-fill-color: transparent;
+                &.title a { 
+                    font-weight: 700; 
                 }
         
                 &:last-child {

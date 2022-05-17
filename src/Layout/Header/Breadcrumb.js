@@ -5,7 +5,7 @@ const Breadcrumb = ()=> {
     const location = useLocation();
     const BreadcrumbText =  location.pathname;
 
-    const Breadcrum = <section className='breadcrumb-wrapper'>
+    const Breadcrum = <section className='breadcrumb-wraper p-0'>
             <Container>
                 <Row>
                     <Col>
