@@ -2,7 +2,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import BannerImage from './../Assets/Images/home-main.svg';
 import { NavLink } from 'react-router-dom'; 
 
-const Home = ()=> {
+const Home = ()=> { 
     return (
         <section className='banner'> 
             <Container >
@@ -21,7 +21,7 @@ const Home = ()=> {
                         </div>
                     </Col>
                 </Row>
-            </Container>
+            </Container> 
         </section>
     )
 }
