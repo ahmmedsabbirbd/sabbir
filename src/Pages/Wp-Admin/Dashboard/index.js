@@ -7,33 +7,45 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useAuth } from '../../../Contexts/AuthorContext'
 
 const Dashboard = ()=> { 
-    const { currentUser, logout, verificationEmail } = useAuth();
+    const { currentUser, logout, verificationEmail } = useAuth(); 
+    const [ verifyEmail, setVerifyEmail ] = useState(currentUser.emailVerified);  
 
-    // try { 
-    //     verificationEmail(currentUser); 
-    // } catch (err) {
-    //     console.log(err); 
-    // }
+    async function onClick(){
+        // email verification
+        try { 
+            await verificationEmail(currentUser); 
+        } catch (err) {
+            console.log(err); 
+        }
+    }
+    const logoutButton = <button onClick={logout}>logout</button>;
 
-    return (
-       <Container >
-           <Row>
-               <Col>
-                <h1>hi</h1>
-                <h1>Wellcome to admin page</h1> 
-                {currentUser && <>
+    const dashboard = <Container >
+        <Row>
+            <Col>
+            <h1>hi</h1>
+            <h1>Wellcome to admin page</h1>
+            
+            {currentUser && <>
                 <p>{currentUser.displayName}</p>
-                    <button onClick={logout}>logout</button>          
+                {logoutButton}
+            </>}
+        </Col>
+        </Row> 
+    </Container>;
 
-                </> }
-            </Col>
-           </Row>
+    const verifyContent = <Container >
+        <Row>
+            <Col>
+            <p>Please verify email</p>
+            <button onClick={onClick}>Verify</button>
+            {logoutButton}
+        </Col>
+        </Row>
+    </Container>;
 
-           <Row>
-               
-           </Row>
-       </Container>
-    )
+
+    return ( verifyEmail ? dashboard : verifyContent )
 }
 
 export default Dashboard;
