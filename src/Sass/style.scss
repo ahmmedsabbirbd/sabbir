@@ -468,7 +468,8 @@ ANIMATION STYLES
 FOOTER STYLES
 ***********************************/
 .footer {
-    z-index: 1030;
+    bottom: 0;
+    z-index: 1;
     overflow: hidden;
     position: relative;
     background: #0d1640;

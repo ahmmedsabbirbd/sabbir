@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom'; 
-import { useAthu } from "../Contexts/AuthorContext";  
+import { useAuth } from "../Contexts/AuthorContext";  
 
 const PrivateOutlet = ()=> {
-    const auth = useAthu(); 
+    const auth = useAuth(); 
 
     return auth.currentUser ? <Outlet />  :  <Navigate to='/wp-admin' /> ;
 }

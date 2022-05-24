@@ -4,10 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
 import { set, ref, onValue, remove, update } from "firebase/database";
 import { Col, Container, Row } from "react-bootstrap";
-import { useAthu } from '../../../Contexts/AuthorContext'
+import { useAuth } from '../../../Contexts/AuthorContext'
 
 const Dashboard = ()=> { 
-    const { currentUser, logout } = useAthu();
+    const { currentUser, logout, verificationEmail } = useAuth();
+
+    // try { 
+    //     verificationEmail(currentUser); 
+    // } catch (err) {
+    //     console.log(err); 
+    // }
 
     return (
        <Container >

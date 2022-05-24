@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import { useAthu } from "../../Contexts/AuthorContext";
+import { Container, Row, Col } from "react-bootstrap";
+import { useAuth } from "../../Contexts/AuthorContext";
 import { useNavigate  } from "react-router-dom"; 
 
 const Singup = ()=> {
@@ -12,7 +12,7 @@ const Singup = ()=> {
     const [ error, setError ] = useState();
     const [ loading, setLoading ] = useState();
     const navigate = useNavigate();
-    const { signup } = useAthu();
+    const { signup } = useAuth();
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -41,23 +41,25 @@ const Singup = ()=> {
 
     return (
        <Container >
-            <h1>Singup</h1>
-            <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" required placeholder="Enter your Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <input type="email" required placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" required placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <input type="password" required placeholder="Enter your Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                
-                <div>
-                    <input type="checkbox" onChange={(e) => setAgree(e.target.checked)}/>
-                    <p>I agree with you</p>
-                </div>
+            <Row>
+                <Col>
+                    <h1>Singup</h1> 
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" required placeholder="Enter your Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <input type="email" required placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="password" required placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" required placeholder="Enter your Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                        
+                        <div>
+                            <input type="checkbox" onChange={(e) => setAgree(e.target.checked)}/>
+                            <p>I agree with you</p>
+                        </div>
 
-                {error && <p>{error}</p>}
-                <button disabled={loading} type='submit'>submit</button>
-            </form>
-           </div>
+                        {error && <p>{error}</p>}
+                        <button disabled={loading} type='submit'>submit</button>
+                    </form>
+                </Col>
+            </Row>
        </Container>
     )
 } 
@@ -68,7 +70,7 @@ const Login = ()=> {
     const [ error, setError ] = useState();
     const [ loading, setLoading ] = useState();
     const navigate = useNavigate();
-    const { login, currentUser } = useAthu();
+    const { login, currentUser } = useAuth();
     
     useEffect(()=> {
         currentUser && navigate('/dashboard');
@@ -92,19 +94,62 @@ const Login = ()=> {
     } 
 
     return (
-       <Container >
-            <h1>Login</h1>
-            <div>
-            <form onSubmit={handleSubmit}> 
-                <input type="email" required placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" required placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Container >
+            <Row>
+                <Col>
+                    <h1>Login</h1> 
+                    <form onSubmit={handleSubmit}> 
+                        <input type="email" required placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="password" required placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                {error && <p>{error}</p>}
-                <button disabled={loading} >submit</button>
-            </form>
-            </div>
-       </Container>
+                        {error && <p>{error}</p>}
+                        <button disabled={loading} >submit</button>
+                    </form> 
+                </Col>
+            </Row> 
+        </Container> 
     )
+}
+
+const ForgetPassword = ()=> {
+    const [ email, setEmail ] = useState('');   
+    const [ error, setError ] = useState();
+    const [ loading, setLoading ] = useState();
+    const navigate = useNavigate();
+    const { resetPassword } = useAuth();
+
+    async function handleSubmit(e){
+        e.preventDefault();  
+        
+        // Forget Password
+        try {
+            setError('');
+            setLoading(true);
+            await resetPassword(email);
+
+            navigate('/wp-admin');
+        } catch (err) {
+            console.log(err);
+            setLoading(false);
+            setError('Forget password not succecus');
+        }
+    } 
+    
+    return (
+        <Container >
+            <Row>
+                <Col>
+                    <h1>Forget Password</h1> 
+                    <form onSubmit={handleSubmit}> 
+                        <input type="email" required placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} /> 
+
+                        {error && <p>{error}</p>}
+                        <button disabled={loading} >submit</button>
+                    </form>
+                </Col>
+            </Row> 
+        </Container>
+     )
 }
 
 export default Login;
