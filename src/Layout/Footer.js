@@ -42,7 +42,7 @@ const Footer = ()=> {
                             <Col md='4' sm='6' >
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
-                                        <li className='title'><NavLink to='/blogs'>Worked</NavLink></li>
+                                        <li className='title'><NavLink to='/worked'>Worked</NavLink></li>
                                     </ul>
                                 </div>
                             </Col> 

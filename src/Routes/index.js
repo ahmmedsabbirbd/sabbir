@@ -13,8 +13,9 @@ import ScrollToTop from "../Components/ScrollToTop";
 import { AuthProvider } from "../Contexts/AuthorContext";
 import Dashboard from '../Pages/Wp-Admin/Dashboard';
 import Login from "../Pages/Wp-Admin/"; 
-import Blogs from "../Pages/Blog"; 
+import Worked from "../Pages/Worked"; 
 import PrivateOutlet from "./PrivateOutlet";
+import SingleWorked from "../Pages/Worked/SingleWorked";
 
 const CustomRoutes = ()=> {  
     
@@ -28,7 +29,8 @@ const CustomRoutes = ()=> {
                     <Route path="/" element={ <Home />} />
                     <Route path="*" element={ <Error />} />
                     <Route path="/about" element={ <About />} />
-                    <Route path="/blogs" element={ <Blogs />} />
+                    <Route path="/worked" element={ <Worked />} />
+                    <Route path="/worked/:title" element={ <SingleWorked />} />
                     <Route path="/contact" element={ <Contact />} />
                     <Route path="/animation" element={ <Animation />} />  
                     <Route path="/wp-admin" element={ <Login />} />

@@ -11,14 +11,14 @@ const useWorked = ()=> {
         
         const fetchWorked = async ()=> {
             const db = getDatabase();
-            const workedRef = ref(db, 'worked');
-
+            const workedRef = ref(db, 'worked'); 
+            
             const workedQuery = query(
                 workedRef,
                 orderByKey() 
-            );
-
-            try {
+                );
+                
+                try {
                 setError(false);
                 setLoading(true);
                 //request firebase database

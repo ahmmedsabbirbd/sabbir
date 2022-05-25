@@ -6,7 +6,9 @@ const Contact = ()=> {
             <Container >
                 <Row >
                     <Col >
-                        <h1>It's upcoming page</h1>
+                        <h1>Contact Us</h1>
+                        <p>Phone : 01712923446</p>
+                        <p>Email : ahmmedsabbirbd@gmail.com</p>
                     </Col> 
                 </Row>
             </Container>  

@@ -30,7 +30,7 @@ const Header = ()=> {
 	const NavItem = <>
 		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/'>Home</NavLink></li>
 		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/about'>About</NavLink></li>
-		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/blogs'>Worked</NavLink></li>
+		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/worked'>Worked</NavLink></li>
 		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/contact'>Contact</NavLink></li>
 		<li><NavLink onClick={()=> setMobileMenuShow(false)} to='/animation'>Animation</NavLink></li>
 		</>;
