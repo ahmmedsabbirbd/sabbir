@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
 import Logo from './../Assets/Images/logo.svg';
-import { Col, Container, Row } from 'react-bootstrap'; 
+import { Col, Container, Row, Button } from 'react-bootstrap'; 
 
 const Footer = ()=> {  
     return ( 
@@ -22,8 +22,8 @@ const Footer = ()=> {
                             </div>
 
                             <ul className='footer__socail-media'>
-                                <li><Link to='https://www.facebook.com/ahmmedsabbirbd' className='icon-facebook'  target='_blank'></Link></li>
-                                <li><Link to='https://tiktok.com/@ahmmedsabbirbd' className='icon-tiktok'   target='_blank'></Link></li>
+                                <li ><Button onClick={ ()=> window.open("https://www.facebook.com/ahmmedsabbirbd", "_blank") } className='icon-facebook'></Button></li>
+                                <li><Button onClick={ ()=> window.open("https://tiktok.com/@ahmmedsabbirbd", "_blank") } className='icon-tiktok' ></Button></li>
                             </ul>                
                         </div>  
                     </Col>
