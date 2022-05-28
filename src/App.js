@@ -1,4 +1,4 @@
-import CustomRoutes from './Routes';
+import CustomRoutes from "./Routes";
 
 function App() {
   return <CustomRoutes />;

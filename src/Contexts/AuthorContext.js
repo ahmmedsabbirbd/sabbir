@@ -70,6 +70,7 @@ export function AuthProvider({children}) {
         signup,
         login,
         logout,
+        resetPassword,
         verificationEmail,
     } 
 

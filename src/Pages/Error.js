@@ -2,8 +2,8 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Error = ()=> {
     return (
-        <section style={{ 'padding': '50px 0'}}> 
-            <Container >
+        <section style={ { 'padding': '50px 0'} }> 
+            <Container>
                 <Row>
                     <Col>
                         <h1>Error!..</h1>
