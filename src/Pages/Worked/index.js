@@ -1,7 +1,6 @@
 import AddWorked from "./AddWorked";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import UpdateWorked from "./UpdateWorked";
 import { useEffect, useState } from "react"; 
 import { Container, Row, Col, Button } from "react-bootstrap";  
 import { getDatabase, ref, onValue, remove, query } from "firebase/database";
@@ -26,7 +25,7 @@ const Blogs = ()=> {
                 });
             }
         });  
-    }, []);  
+    }, [ db ]);  
 
     const Searchworked = worked.filter(work => {  
         return Object.keys(work).some(key => work[key].toString().toLowerCase().includes(searchText.toString().toLowerCase()));
@@ -42,16 +41,16 @@ const Blogs = ()=> {
                 <Row >
                     <Col> 
                     <AddWorked />
-                        {( auth.lastNotifiedUid !== "jZGXrap732aDZLOBoG2SyjOzK252" ) && <input type="text" placeholder="Search Worked" onChange={(e)=> setSearchText(e.target.value)} />}
+                        <input type="text" placeholder="Search Worked" onChange={(e)=> setSearchText(e.target.value)} />
                         
                         {Searchworked.length > 0 && Searchworked.map((work, index)=> (<div key={ index }>
-                            <Link to={work.title} state={ work } >
-                                <img src={work.image} className="img-fluid" />
+                            <Link to={ work.title } state={ work } >
+                                <img src={ work.image } alt={ work.title } className="img-fluid" />
                                 <h2>{work.title}</h2>  
                             </Link>
-                            { ( auth.lastNotifiedUid == "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
+                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
                             <Button variant="" onClick={ ()=> handleDelete(work.uid) } >Delete</Button>
-                            <UpdateWorked work={work} />
+                            {/* <UpdateWorked work={work} /> */}
                             </>}</div>
                         ))}  
 

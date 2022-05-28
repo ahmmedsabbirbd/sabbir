@@ -1,5 +1,6 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useLocation, useNavigate, useParams } from "react-router-dom"; 
+import UpdateWorked from "./UpdateWorked";
 
 const SingleWorked = ()=> {
     const navigate = useNavigate(); 
@@ -12,9 +13,10 @@ const SingleWorked = ()=> {
             <Row> 
                 <Col>
                     <article>
-                        <img src={image} className="img-fluid" />
+                        <UpdateWorked work={ location.state } />
+                        <img src={ image } alt={ title } className="img-fluid" />
                         <h1>{title}</h1> 
-                        <div className="content-editor" dangerouslySetInnerHTML={{__html: content}} ></div>
+                        <div className="content-editor" dangerouslySetInnerHTML={ {__html: content} } ></div>
                         <Button variant="" onClick={ ()=> navigate('/worked')  } >Go Back</Button>
                     </article>
                 </Col>
