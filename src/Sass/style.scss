@@ -134,13 +134,13 @@ select, textarea {
 	border: 0;
 	outline: 0;
 	color: $black;
-	font-size: 24px;
+	font-size: 20px;
 	box-shadow: none;
 	font-weight: 700; 
-	line-height: 32px;
-	background-image: $bgimage;
-	padding: 13px 20px;
+	line-height: 28px;
+	padding: 10px 15px;
 	border-radius: 500px;
+	background-image: $bgimage;
 	@include transition(all 0.3s ease);
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
