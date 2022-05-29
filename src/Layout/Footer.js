@@ -1,36 +1,36 @@
 import { NavLink, Link } from 'react-router-dom';
 import Logo from './../Assets/Images/logo.svg';
-import { Col, Container, Row, Button } from 'react-bootstrap'; 
+import { Col, Container, Row, Button, Image } from 'react-bootstrap'; 
 
 const Footer = ()=> {  
     return ( 
         <footer className='footer'>
-            <Container >
+            <Container>
                 <div className='ball'></div>
                 <div className='crooked'></div>
-                <Row >
+                <Row>
                     <Col lg='4'> 
                         <div className='footer__widget'>
                             <div className='footer__logo'>
                                 <NavLink to='/' className='navbar-brand'>
-                                    <img src={Logo} className='img-fluid' alt='logo' />
+                                    <Image src={Logo} fluid alt='logo' />
                                 </NavLink>
                             </div>
 
                             <div className='footer__text'>
-                                <p>It is a long established fact that a reoder will be distracted by the readole content of a page when looking at it's layout</p>
+                                <p>Copyright © 2022 Sabbir Ahmmed All Rights Reserved.</p>
                             </div>
 
                             <ul className='footer__socail-media'>
-                                <li ><Button onClick={ ()=> window.open("https://www.facebook.com/ahmmedsabbirbd", "_blank") } className='icon-facebook'></Button></li>
-                                <li><Button onClick={ ()=> window.open("https://tiktok.com/@ahmmedsabbirbd", "_blank") } className='icon-tiktok' ></Button></li>
+                                <li><Button variant="" onClick={ ()=> window.open("https://www.facebook.com/ahmmedsabbirbd", "_blank") } className='icon-facebook'></Button></li>
+                                <li><Button variant="" onClick={ ()=> window.open("https://tiktok.com/@ahmmedsabbirbd", "_blank") } className='icon-tiktok'></Button></li>
                             </ul>                
                         </div>  
                     </Col>
 
                     <Col lg='8'>
                         <Row className='mb-30'>
-                            <Col md='4' sm='6' >
+                            <Col md='4' sm='6'>
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/animation'>Animation</NavLink></li>
@@ -39,7 +39,7 @@ const Footer = ()=> {
                                 </div>
                             </Col> 
 
-                            <Col md='4' sm='6' >
+                            <Col md='4' sm='6'>
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/worked'>Worked</NavLink></li>
@@ -47,7 +47,7 @@ const Footer = ()=> {
                                 </div>
                             </Col> 
 
-                            <Col md='4' sm='6' >
+                            <Col md='4' sm='6'>
                                 <div className='footer__widget'>  
                                     <ul className='footer__widget-menu text-capitalize'>  
                                         <li className='title'><NavLink to='/about'>About</NavLink></li>
@@ -58,7 +58,7 @@ const Footer = ()=> {
                     </Col>
                 </Row>
 
-                <Row >
+                <Row>
                     <Col>  
                         <hr />
                     </Col>
