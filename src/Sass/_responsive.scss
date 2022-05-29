@@ -98,6 +98,11 @@ MEDIA QUERIES
 
 @media only screen and (max-width: 575px)  {
 
+    body {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
     h1, .h1 { font-size: 36px; line-height: 46px; }
     h2, .h2 { font-size: 32px;  line-height: 42px;  }
     h3, .h3 { font-size: 28px;  line-height: 38px;  }
@@ -154,6 +159,7 @@ MEDIA QUERIES
         }
 
         &__logo a {
+            max-width: 130px;
             margin-left: auto;
             margin-right: auto;
         }
