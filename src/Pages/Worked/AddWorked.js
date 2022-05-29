@@ -30,6 +30,9 @@ const AddWorked = ()=> {
             });
 
             setLoading(false);
+            setImage("");
+            setTitle("");
+            setContent("");
         } catch (err) {
             console.log(err); 
             setLoading(false);
@@ -40,7 +43,7 @@ const AddWorked = ()=> {
     } 
 
     return (<>
-    { ( auth.lastNotifiedUid == "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addWorkedShow && <Button onClick={()=> setAddWorkedShow(!addWorkedShow)} variant="" >Add Worked</Button> }
+    { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addWorkedShow && <Button onClick={()=> setAddWorkedShow(!addWorkedShow)} variant="" >Add Worked</Button> }
     
     {addWorkedShow && <>
         <form onSubmit={writeToWorkedAdd}>

@@ -2,7 +2,7 @@ import AddWorked from "./AddWorked";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react"; 
-import { Container, Row, Col, Button } from "react-bootstrap";  
+import { Container, Row, Col, Button, Image } from "react-bootstrap";  
 import { getDatabase, ref, onValue, remove, query } from "firebase/database";
 
 const Blogs = ()=> { 
@@ -14,17 +14,24 @@ const Blogs = ()=> {
     const [ searchText, setSearchText ] = useState(""); 
 
     useEffect(() => { 
-        onValue(query( ref(db, `/worked`) ), snapshot => {
-            setWorked([]);
-            
-            const data = snapshot.val(); 
-            
-            if( data !== null) {
-                Object.values(data).map(work => {
-                    setWorked(oldArray => [...oldArray, work]);
-                });
-            }
-        });  
+
+        try {
+            onValue(query( ref(db, `/worked`) ), snapshot => {
+                setWorked([]);
+                
+                const data = snapshot.val(); 
+                
+                if( data !== null) {
+                    Object.values(data).map(work => setWorked(oldArray => [...oldArray, work]) );
+                }
+            });
+            setLoading(false);
+        } catch (err) {
+            console.log(err); 
+            setLoading(true);
+            setError("Some Problem"); 
+        }
+
     }, [ db ]);  
 
     const Searchworked = worked.filter(work => {  
@@ -40,22 +47,26 @@ const Blogs = ()=> {
             <Container >
                 <Row >
                     <Col> 
-                    <AddWorked />
+                        <AddWorked />
                         <input type="text" placeholder="Search Worked" onChange={(e)=> setSearchText(e.target.value)} />
                         
                         {Searchworked.length > 0 && Searchworked.map((work, index)=> (<div key={ index }>
                             <Link to={ work.title } state={ work } >
-                                <img src={ work.image } alt={ work.title } className="img-fluid" />
+
+                            {work.image &&
+                                <div className="media">
+                                    <Image src={ work.image } alt={ work.title } fluid />
+                                </div>
+                            }
                                 <h2>{work.title}</h2>  
                             </Link>
                             { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
-                            <Button variant="" onClick={ ()=> handleDelete(work.uid) } >Delete</Button>
-                            {/* <UpdateWorked work={work} /> */}
+                            <Button variant="" onClick={ ()=> handleDelete(work.uid) } >Delete</Button> 
                             </>}</div>
                         ))}  
 
-                        {!loading && worked.length === 0 && <div>Data not found</div> }
-                        {error && <div>There was a error</div> }
+                        {!loading && Searchworked.length === 0 && <div>Data not found</div> }
+                        {error && error }
                     </Col> 
                 </Row>
             </Container>  
