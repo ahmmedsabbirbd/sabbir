@@ -118,10 +118,6 @@ select, textarea {
 	border-radius: 12px !important;
 	@include transition(all 0.3s ease);
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
-	-webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
 	@include placeholder($black, 18px, 700);
 
 	&:hover, &:focus {
@@ -479,13 +475,18 @@ ANIMATION STYLES
 .animation {
 
     &-item {
+        padding: 20px;
+        display: block;
+        background-color: #f1f1f1;
+        @include border-radius(10px);
+        @include transition(all .3s ease);
 
-        p {
-            margin: 0;
+        p { 
             color: $black;
         }
 
         &:hover {
+            background-color: #e6e6e6;
             
             .title {
                 background-image: $hbgimage;

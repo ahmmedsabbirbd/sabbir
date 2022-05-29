@@ -5,9 +5,9 @@ const AnimationItem = (props)=> {
     const { title, description, url } = props;
     
     return ( 
-        <Col lg='4' sm='6'>
-            <NavLink className='animation-item' to={url} >
-                <h3 className='title' >{title}</h3>
+        <Col lg="4" sm="6">
+            <NavLink className="animation-item" to={url} >
+                <h3 className="title" >{title}</h3>
                 <p>{description}</p>
             </NavLink>
         </Col>
