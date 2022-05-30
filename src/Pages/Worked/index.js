@@ -29,7 +29,7 @@ const Blogs = ()=> {
         } catch (err) {
             console.log(err); 
             setLoading(true);
-            setError("Some Problem"); 
+            setError("<p className='error'>Some Problem</p>"); 
         }
 
     }, [ db ]);  

@@ -601,7 +601,8 @@ ABOUT STYLES
 ***********************************/
 .skill {
 
-    &__content { 
+    &__content {
+        position: relative; 
         
         .title {
             margin-left: auto;
@@ -611,11 +612,15 @@ ABOUT STYLES
         .skill__items {
             margin-top: 30px;
         }
+
+        .btn {
+            margin-top: 10px;
+        }
     }
 }
 
 .skill__items {
-    padding: -10px;
+    margin: -10px;
 
     li {
         padding: 10px;
@@ -623,6 +628,21 @@ ABOUT STYLES
         img {
             max-width: 50px;
         }
+    }
+}
+
+.add-skill, .update-content {
+    width: 100%;
+    height: 100%;
+    z-index: 1032;
+    position: absolute;
+
+    input + input {
+        margin-top: 10px;
+    }
+
+    textarea {
+        margin-top: 10px;
     }
 }
 
