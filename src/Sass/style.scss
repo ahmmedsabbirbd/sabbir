@@ -110,10 +110,10 @@ select, textarea {
 	border: 0 !important;
 	width: 100% !important;
 	color: $black !important;
-	font-size: 20px !important;
+	font-size: 18px !important;
 	font-weight: 700 !important;
-	line-height: 30px !important;
-	padding: 14px 18px !important;
+	line-height: 28px !important;
+	padding: 12px 15px !important;
 	background: $bgimage !important;
 	border-radius: 12px !important;
 	@include transition(all 0.3s ease);
@@ -391,16 +391,53 @@ HEADER STYLES
 }
 
 /***********************************
+WP-ADMIN STYLES
+***********************************/
+.login, .forget-password, .singup {
+
+    .title {
+        margin-bottom: 10px;
+    }
+
+    input + input {
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    .agree {
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+
+        label {
+            margin-left: 10px;
+        }
+    } 
+
+    .error {
+        margin-top: 10px;
+    }
+}
+
+.error {
+    color: red; 
+}
+
+// DASHBOARD
+.btn-group {
+    margin-top: 10px;
+}
+
+/***********************************
 HOME STYLES
 ***********************************/
 .banner {
 
     &__content {
-
-        p + p {
-            margin-top: 15px;
-        } 
-
+        
         .btn {
             margin-top: 15px;
         }

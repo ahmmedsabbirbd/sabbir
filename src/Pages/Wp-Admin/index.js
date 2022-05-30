@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useAuth } from "../../Contexts/AuthorContext";
 
-const Singup = ()=> {
+export function Singup() {
     const { signup } = useAuth();
     const navigate = useNavigate();
     const [ error, setError ] = useState();
@@ -23,7 +23,7 @@ const Singup = ()=> {
         }
 
         if (!agree) {
-            setError("please checked my condition");
+            setError("Please checked my condition");
             return
         }
 
@@ -40,27 +40,29 @@ const Singup = ()=> {
     } 
 
     return (
-       <Container>
-            <Row>
-                <Col>
-                    <h1>Singup</h1> 
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" required placeholder="Enter your Username" value={ username } onChange={  (e) => setUsername(e.target.value) } />
-                        <input type="email" required placeholder="Enter your Email" value={ email } onChange={ (e) => setEmail(e.target.value) } />
-                        <input type="password" required placeholder="Enter your Password" value={ password } onChange={ (e) => setPassword(e.target.value) } />
-                        <input type="password" required placeholder="Enter your Confirm Password" value={confirmPassword} onChange={ (e) => setConfirmPassword(e.target.value) } />
-                        
-                        <div>
-                            <input type="checkbox" onChange={ (e) => setAgree(e.target.checked) }/>
-                            <p>I agree with you</p>
-                        </div>
+        <section className="singup">
+            <Container>
+                    <Row>
+                        <Col>
+                            <h1 className="title">Singup</h1> 
+                            <form onSubmit={handleSubmit}>
+                                <input type="text" required placeholder="Enter your Username" value={ username } onChange={  (e) => setUsername(e.target.value) } />
+                                <input type="email" required placeholder="Enter your Email" value={ email } onChange={ (e) => setEmail(e.target.value) } />
+                                <input type="password" required placeholder="Enter your Password" value={ password } onChange={ (e) => setPassword(e.target.value) } />
+                                <input type="password" required placeholder="Enter your Confirm Password" value={confirmPassword} onChange={ (e) => setConfirmPassword(e.target.value) } />
+                                
+                                <div className="agree">
+                                    <input id="agree" type="checkbox" onChange={ (e) => setAgree(e.target.checked) }/>
+                                    <label for="agree">I agree with you</label>
+                                </div>
 
-                        {error && <p>{ error }</p>}
-                        <button disabled={ loading } type="submit">submit</button>
-                    </form>
-                </Col>
-            </Row>
-       </Container>
+                                {error && <p className="error">{ error }</p>}
+                                <button className="btn" disabled={ loading } type="submit">Submit</button>
+                            </form>
+                        </Col>
+                    </Row>
+            </Container>
+        </section>
     )
 } 
 
@@ -74,7 +76,7 @@ const Login = ()=> {
     
     useEffect(()=> {
         currentUser && navigate("/dashboard");
-    }, [])
+    }, [currentUser, navigate])
 
     async function handleSubmit(e){
         e.preventDefault();  
@@ -94,24 +96,26 @@ const Login = ()=> {
     } 
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <h1>Login</h1> 
-                    <form onSubmit={ handleSubmit }> 
-                        <input type="email" required placeholder="Enter your Email" value={ email }  onChange={ (e) => setEmail(e.target.value) } />
-                        <input type="password" required placeholder="Enter your Password" value={ password } onChange={ (e) => setPassword(e.target.value) } />
+        <section className="login">
+            <Container>
+                <Row>
+                    <Col>
+                        <h1 className="title">Login</h1> 
+                        <form onSubmit={ handleSubmit }> 
+                            <input type="email" required placeholder="Enter your Email" value={ email }  onChange={ (e) => setEmail(e.target.value) } />
+                            <input type="password" required placeholder="Enter your Password" value={ password } onChange={ (e) => setPassword(e.target.value) } />
 
-                        {error && <p>{ error }</p>}
-                        <button disabled={ loading }>submit</button>
-                    </form> 
-                </Col>
-            </Row> 
-        </Container> 
+                            {error && <p className="error">{ error }</p>}
+                            <button className="btn" disabled={ loading } type="submit">Submit</button>
+                        </form> 
+                    </Col>
+                </Row> 
+            </Container>
+        </section>
     )
 }
 
-const ForgetPassword = ()=> {
+export function ForgetPassword()  {
     const navigate = useNavigate();
     const { resetPassword } = useAuth();
     const [ error, setError ] = useState();
@@ -137,20 +141,22 @@ const ForgetPassword = ()=> {
     } 
     
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <h1>Forget Password</h1> 
-                    <form onSubmit={ handleSubmit }> 
-                        <input type="email" required placeholder="Enter your Email" value={ email } onChange={ (e) => setEmail(e.target.value) } /> 
+        <section className="forget-password">
+            <Container>
+                <Row>
+                    <Col>
+                        <h1 className="title">Forget Password</h1> 
+                        <form onSubmit={ handleSubmit }> 
+                            <input type="email" required placeholder="Enter your Email" value={ email } onChange={ (e) => setEmail(e.target.value) } /> 
 
-                        {error && <p>{ error }</p>}
-                        <button disabled={ loading }>submit</button>
-                    </form>
-                </Col>
-            </Row> 
-        </Container>
-     )
+                            {error && <p className="error">{ error }</p>}
+                            <button className="btn" disabled={ loading }>Submit</button>
+                        </form>
+                    </Col>
+                </Row> 
+            </Container>
+        </section>
+    )
 }
 
 export default Login;

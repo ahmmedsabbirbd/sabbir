@@ -87,10 +87,23 @@ MEDIA QUERIES
         padding: 8px 15px;
     }
 
+    /***********************************
+    HOME STYLES
+    ***********************************/
     .banner {
 
         &__media {
             margin-top: 10px;
+        }
+    }
+
+    /***********************************
+    ABOUT STYLES
+    ***********************************/
+    .about {
+
+        &__content {
+            margin-bottom: 30px;
         }
     }
 
