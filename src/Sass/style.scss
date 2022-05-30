@@ -58,6 +58,22 @@ body {
     }
 }
 
+.fake-overly {
+    @include transition(all .3s ease);
+
+    &:after {
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        z-index: 1031;
+        opacity: .98;
+        position: fixed;
+        background: #f1f1f1;
+    }
+}
+
 h1, .h1 { font-size: 72px; line-height: 82px; }
 h2, .h2 { font-size: 60px;  line-height: 72px;  }
 h3, .h3 { font-size: 48px;  line-height: 58px;  }
@@ -68,9 +84,10 @@ h6, .h6 {  font-size: 24px;  line-height: 34px;  }
 h1, h2, h3, h4, h5, h6, 
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 700;
+    width: fit-content;
     background-clip: text;
     background-image: $bgimage;
-    -webkit-text-fill-color: transparent; 
+    -webkit-text-fill-color: transparent;
 }
 
 a, button {
@@ -140,10 +157,19 @@ select, textarea {
 	@include transition(all 0.3s ease);
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
 
-	&:hover, &:focus, &:active {
+    &.btn-danger {
+        color: $white;
+        background-image: linear-gradient(107deg, #ff0000, #ad2bfe);
+        
+        &:hover, &:focus, &.active { 
+            background-image: linear-gradient(107deg, #ff0000, #ff0000);
+        }
+    }
+
+	&:hover, &:focus, &.active {
 		outline: 0;
 		color: $white;
-		box-shadow: none;
+		box-shadow: none !important;
 		background-image: $hbgimage;
 	}
 }
@@ -384,6 +410,7 @@ HEADER STYLES
 .breadcrumb { 
     margin: 0;
     color: white;
+    overflow: hidden;
     padding: 10px 25px;
     border-radius: 500px;
     text-transform: capitalize;
@@ -445,8 +472,129 @@ HOME STYLES
 }
 
 /***********************************
-CONTACT STYLES
+WORKED STYLES
 ***********************************/
+.worked { 
+
+    &__top {
+        position: relative;
+        margin-bottom: 20px;
+
+        .search-bar {
+            margin-bottom: 10px;
+        }
+    }
+
+    .mb-30 {
+        margin-bottom: -30px;
+    }
+
+    &-post {
+        display: block;
+        position: relative;
+        margin-bottom: 30px;
+
+        a {
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .media {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            @include border-radius(20px);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @include transition(all .3s ease);
+            }
+        }
+
+        .btn {
+            z-index: 2; 
+            position: relative;
+        }
+
+        &:hover, &:focus {
+            
+            .media {
+
+                img {
+                    @include transform(scale(1.2));
+                }
+            }
+
+            .title {
+                background-image: $hbgimage;
+            }
+        }
+    }
+}
+
+.add-worked, .upadte-worked {
+    width: 100%;
+    height: 100%;
+    z-index: 1032;
+    position: absolute;
+
+    input, .jodit-react-container {
+        margin-bottom: 10px;
+    }
+}
+
+.single-worked {
+
+    article {
+        position: relative;
+    }
+
+    .btn-update {
+        margin-bottom: 15px;
+    }
+
+    .fetured-media {
+        margin-bottom: 30px;
+    }
+    
+    .title {
+        margin-bottom: 10px;
+    }
+
+    .content-editor {
+        margin-bottom: 30px;
+    }
+}
+
+.content-editor, .jodit-wysiwyg {
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 15px;
+    }
+
+    ol, ul {
+        margin-bottom: 15px;
+    }
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .text-left {
+        display: block;
+        margin-left: auto;
+    }
+}
 
 /***********************************
 ABOUT STYLES
@@ -454,7 +602,11 @@ ABOUT STYLES
 .skill {
 
     &__content { 
-        // max-width: 1000px;
+        
+        .title {
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .skill__items {
             margin-top: 30px;

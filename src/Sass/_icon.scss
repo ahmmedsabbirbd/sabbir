@@ -10,8 +10,7 @@
 	font-style: normal;
 }
 
-[data-icon]:before {
-	speak: none;
+[data-icon]:before { 
 	line-height: 1;
 	vertical-align: middle;
 	font-family: 'sabbir';
@@ -23,8 +22,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
  
-[class^="icon-"]:before, [class*=" icon-"]:before {
-	speak: none;
+[class^="icon-"]:before, [class*=" icon-"]:before { 
 	line-height: 1;
 	vertical-align: middle;
 	font-family: 'sabbir';
@@ -36,14 +34,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-tiktok:before { content: '\e800'; } /* '' */
-.icon-mail:before { content: '\e801'; } /* '' */
-.icon-heart-empty:before { content: '\e802'; } /* '' */
-.icon-heart:before { content: '\e803'; } /* '' */
-.icon-star-empty:before { content: '\e804'; } /* '' */
-.icon-star:before { content: '\e805'; } /* '' */
-.icon-phone:before { content: '\e806'; } /* '' */
-.icon-twitter:before { content: '\f099'; } /* '' */
-.icon-facebook:before { content: '\f09a'; } /* '' */
-.icon-linkedin-1:before { content: '\f0e1'; } /* '' */
-.icon-git:before { content: '\f1d3'; } /* '' */
+.icon-tiktok:before { content: '\e800'; }
+.icon-mail:before { content: '\e801'; }
+.icon-heart-empty:before { content: '\e802'; }
+.icon-heart:before { content: '\e803'; }
+.icon-star-empty:before { content: '\e804'; }
+.icon-star:before { content: '\e805'; }
+.icon-phone:before { content: '\e806'; }
+.icon-twitter:before { content: '\f099'; }
+.icon-facebook:before { content: '\f09a'; }
+.icon-linkedin-1:before { content: '\f0e1'; }
+.icon-git:before { content: '\f1d3'; }

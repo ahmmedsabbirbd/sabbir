@@ -46,17 +46,19 @@ const UpdateWorked = (props)=> {
         }
 
         setUpdateWorkedShow(!updateWorkedShow);
-    } 
+    }
+
+    updateWorkedShow ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
 
     return (<>
-    { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !updateWorkedShow && <Button onClick={()=> handleUpdate(work) } variant="" >Update Worked</Button>}
+    { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !updateWorkedShow && <Button onClick={()=> handleUpdate(work) } variant="update" >Update Worked</Button>}
     {updateWorkedShow && <>
-        <form onSubmit={writeToWorkedUpdate}>
+        <form className="upadte-worked" onSubmit={writeToWorkedUpdate}>
             <input type="text" value={title} required placeholder="Worked title" onChange={(e) => setTitle(e.target.value)} /> 
             <input type="text" value={image} placeholder="Futured Image link" onChange={(e) => setImage(e.target.value)} />  
             <JoditEditor value={content} tabIndex={1} onBlur={newContent => setContent(newContent)} />  
 
-            {error && <p>{error}</p>}
+            {error && <p className="error">{error}</p>}
             <Button disabled={loading} type="submit" variant="">Update</Button>
             <Button onClick={()=> setUpdateWorkedShow(false) } variant="" >Cancel</Button>
         </form> 

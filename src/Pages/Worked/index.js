@@ -43,28 +43,39 @@ const Blogs = ()=> {
     }
 
     return (
-        <section className="blog"> 
+        <section className="worked"> 
             <Container >
-                <Row >
-                    <Col> 
-                        <AddWorked />
-                        <input type="text" placeholder="Search Worked" onChange={(e)=> setSearchText(e.target.value)} />
-                        
-                        {Searchworked.length > 0 && Searchworked.map((work, index)=> (<div key={ index }>
-                            <Link to={ work.title } state={ work } >
+                <Row>
+                    <Col>
+                        <div className="worked__top">
+                            <div className="search-bar">
+                                <input type="text" placeholder="Search Worked" onChange={(e)=> setSearchText(e.target.value)} />
+                            </div>
+                            <AddWorked />
+                        </div>
+                    </Col>
+                </Row>
 
+                <Row className="mb-30"> 
+                    {Searchworked.length > 0 && Searchworked.map((work, index)=> (<Col md="6" key={ index }>
+                        <article className="worked-post">
+                            <Link  to={ work.title } state={ work } />
                             {work.image &&
-                                <div className="media">
+                                <div className="media d-flex align-items-center justify-content-center">
                                     <Image src={ work.image } alt={ work.title } fluid />
                                 </div>
                             }
-                                <h2>{work.title}</h2>  
-                            </Link>
-                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
-                            <Button variant="" onClick={ ()=> handleDelete(work.uid) } >Delete</Button> 
-                            </>}</div>
-                        ))}  
 
+                            <h4 className="title">{work.title}</h4>  
+                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
+                            <Button variant="danger" onClick={ ()=> handleDelete(work.uid) } >Delete</Button> 
+                            </>}
+                        </article>
+
+                        </Col>
+                    ))}
+                    
+                    <Col>
                         {!loading && Searchworked.length === 0 && <div>Data not found</div> }
                         {error && error }
                     </Col> 
