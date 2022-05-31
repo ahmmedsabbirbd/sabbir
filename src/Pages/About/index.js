@@ -10,7 +10,7 @@ const About = ()=> {
                     <Col md='6'>
                         <div className="about__content">
                             <h1 className="title">About Me</h1>
-                            <p>I'm Sabbir.And i'm front-end developer with 2 years of experience. My work is very passionate and dedicated to me. I have acquired enough skills for you to accomplish your work perfectly.</p>
+                            <p>I'm Sabbir.And i'm front-end developer. My work is very passionate and dedicated to me. I have acquired enough skills for you to accomplish your work perfectly.</p>
                         </div>
                     </Col>
 

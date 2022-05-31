@@ -24,6 +24,7 @@ const Footer = ()=> {
                             <ul className='footer__socail-media'>
                                 <li><Button variant="" onClick={ ()=> window.open("https://www.facebook.com/ahmmedsabbirbd", "_blank") } className='icon-facebook'></Button></li>
                                 <li><Button variant="" onClick={ ()=> window.open("https://tiktok.com/@ahmmedsabbirbd", "_blank") } className='icon-tiktok'></Button></li>
+                                <li><Button variant="" onClick={ ()=> window.open("https://github.com/ahmmedsabbirbd", "_blank") } className='icon-git'></Button></li>
                             </ul>                
                         </div>  
                     </Col>
