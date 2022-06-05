@@ -58,7 +58,7 @@ body {
     }
 }
 
-.fake-overly {
+.fake-overly, .fake-overly-1 {
     @include transition(all .3s ease);
 
     &:after {
@@ -462,8 +462,9 @@ WP-ADMIN STYLES
 HOME STYLES
 ***********************************/
 .banner {
-
+    
     &__content {
+        position: relative;
         
         .btn {
             margin-top: 15px;
@@ -599,6 +600,13 @@ WORKED STYLES
 /***********************************
 ABOUT STYLES
 ***********************************/
+.about {
+
+    &__content {
+        position: relative;
+    }
+}
+
 .skill {
 
     &__content {

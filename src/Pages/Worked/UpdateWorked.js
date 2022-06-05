@@ -59,8 +59,10 @@ const UpdateWorked = (props)=> {
             <JoditEditor value={content} tabIndex={1} onBlur={newContent => setContent(newContent)} />  
 
             {error && <p className="error">{error}</p>}
-            <Button disabled={loading} type="submit" variant="">Update</Button>
-            <Button onClick={()=> setUpdateWorkedShow(false) } variant="" >Cancel</Button>
+            <div className="btn-group">
+                <Button disabled={loading} type="submit" variant="">Update</Button>
+                <Button onClick={()=> setUpdateWorkedShow(false) } variant="" >Cancel</Button>
+            </div>
         </form> 
     </>}
     </>)

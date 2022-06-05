@@ -107,7 +107,7 @@ const Skill = ()=> {
         remove(ref(db, `/skillItem/${uid}`)); 
     }
 
-    addSkillShow || addSkillContenShow ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
+    //  ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
 
     return (
         <section className="skill"> 
