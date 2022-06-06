@@ -3,6 +3,7 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { getAuth } from "firebase/auth";
 import { getDatabase, onValue, query, ref, set } from "firebase/database";
 import { useEffect, useState } from "react";
+import { motion } from "../../../node_modules/framer-motion/dist/framer-motion.js";
 
 const About = ()=> {
     const auth = getAuth();
@@ -63,7 +64,17 @@ const About = ()=> {
     addAboutShow ? document.body.classList.add("fake-overly-1") : document.body.classList.remove("fake-overly-1");
 
     return (<>
-        <section className="about pb-0"> 
+        <motion.section className="about pb-0"
+            intial= {
+                {width: 0} 
+            }
+            animate= {
+                {width: "100%"} 
+            }
+            exit= { 
+                {x: window.innerWidth, transition: { duration: 0.3 }} 
+            } 
+        > 
             <Container >
                 <Row className="align-items-center">
                     <Col md='6'>
@@ -96,7 +107,7 @@ const About = ()=> {
                     </Col>
                 </Row>
             </Container>  
-        </section>
+        </motion.section>
 
         <Skill />
     </>)

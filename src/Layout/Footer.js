@@ -3,7 +3,8 @@ import Logo from './../Assets/Images/logo.svg';
 import { Col, Container, Row, Button, Image } from 'react-bootstrap'; 
 
 const Footer = ()=> {  
-    return ( 
+    return ( <>
+        <div className="footer-gutter"></div>
         <footer className='footer'>
             <Container>
                 <div className='ball'></div>
@@ -66,7 +67,7 @@ const Footer = ()=> {
                 </Row>
             </Container>
         </footer>
-    )
+    </>)
 }
 
 export default Footer;

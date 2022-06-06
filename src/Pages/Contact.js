@@ -1,8 +1,23 @@
-import { Col, Container, Row } from "react-bootstrap"; 
+import { Col, Container, Row } from "react-bootstrap";
+import { motion } from "../../node_modules/framer-motion/dist/framer-motion.js";
 
 const Contact = ()=> {
     return (
-        <section className="contact"> 
+        <motion.section 
+            className="contact"
+
+            intial= {
+                {width: 0} 
+            }
+
+            animate= {
+                {width: "100%"} 
+            }
+            
+            exit= { 
+                {x: window.innerWidth, transition: { duration: 0.3 }} 
+            } 
+        > 
             <Container>
                 <Row>
                     <Col>
@@ -12,7 +27,7 @@ const Contact = ()=> {
                     </Col> 
                 </Row>
             </Container>  
-        </section>
+        </motion.section>
     )
 }
 

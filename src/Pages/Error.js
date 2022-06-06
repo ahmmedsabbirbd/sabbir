@@ -1,8 +1,23 @@
-import { Container, Row, Col } from "react-bootstrap"; 
+import { Container, Row, Col } from "react-bootstrap";
+import { motion } from "../../node_modules/framer-motion/dist/framer-motion.js";
 
 const Error = ()=> {
     return (
-        <section style={ { 'padding': '50px 0'} }> 
+        <motion.section 
+            style={ { 'padding': '50px 0'} } 
+
+            intial= {
+                {width: 0} 
+            }
+
+            animate= {
+                {width: "100%"} 
+            }
+            
+            exit= { 
+                {x: window.innerWidth, transition: { duration: 0.3 }} 
+            } 
+        > 
             <Container>
                 <Row>
                     <Col>
@@ -11,7 +26,7 @@ const Error = ()=> {
                     </Col> 
                 </Row>
             </Container>  
-        </section>
+        </motion.section>
     )
 }
 

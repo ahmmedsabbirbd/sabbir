@@ -3,6 +3,8 @@ import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { getDatabase, ref, onValue, remove, query, set } from "firebase/database";
+import { motion } from "../../../node_modules/framer-motion/dist/framer-motion.js";
+
 
 const Skill = ()=> {
     const auth = getAuth();
@@ -110,7 +112,16 @@ const Skill = ()=> {
     //  ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
 
     return (
-        <section className="skill"> 
+        <motion.section className="skill" intial= {
+            {width: 0} 
+        }
+        animate= {
+            {width: "100%"} 
+        }
+        exit= { 
+            {x: window.innerWidth, transition: { duration: 0.3 }} 
+        } 
+        > 
             <Container >
                 <Row>
                     <Col>
@@ -159,7 +170,7 @@ const Skill = ()=> {
                     </Col> 
                 </Row>
             </Container>  
-        </section>
+        </motion.section>
     )
 }
 

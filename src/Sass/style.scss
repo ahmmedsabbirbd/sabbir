@@ -465,10 +465,14 @@ HOME STYLES
     
     &__content {
         position: relative;
-        
-        .btn {
-            margin-top: 15px;
-        }
+
+        .title {
+            margin-bottom: 5px;
+        } 
+    }
+
+    &__media {
+        max-width: 363px; 
     }
 }
 
@@ -717,13 +721,53 @@ ANIMATION STYLES
 }
 
 /***********************************
+SKELETON STYLES
+***********************************/
+@keyframes skeleton {
+
+    to {
+        opacity: 0.5;
+    }
+    
+}
+
+.skeleton {
+    max-width: 100%;
+    background: #313131;
+    @include border-radius(20px);
+    animation: skeleton 1s ease infinite alternate;
+    
+    &.title { 
+        height: 82px;
+    }
+
+    &.content {
+        height: 70px;
+    }
+    
+    &.btn-group {
+        height: 48px;
+        width: 318px;
+    }
+
+    &.banner__media {
+        height: 363px;
+    }
+}
+/***********************************
 FOOTER STYLES
 ***********************************/
+.footer-gutter {
+    height: 566px;
+    min-height: 566px;
+}
+
 .footer {
     bottom: 0;
     z-index: 1;
+    width: 100%;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     background: #0d1640;
     padding: 150px 0 40px;
   

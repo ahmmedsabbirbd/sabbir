@@ -10,6 +10,11 @@ MEDIA QUERIES
     /***********************************
     FOOTER STYLES
     ***********************************/
+    .footer-gutter {
+        height: 516px;
+        min-height: 516px;
+    }
+
     .footer {
         padding-top: 100px;
     }
@@ -52,6 +57,11 @@ MEDIA QUERIES
     /***********************************
     FOOTER STYLES
     ***********************************/
+    .footer-gutter {
+        height: 496px;
+        min-height: 496px;
+    }
+
     .footer {
         padding-top: 80px;
     }
@@ -62,6 +72,11 @@ MEDIA QUERIES
     /***********************************
     FOOTER STYLES
     ***********************************/
+    .footer-gutter {
+        height: 516px;
+        min-height: 516px;
+    }
+
     .footer {
         padding-top: 60px;
     }
@@ -93,6 +108,7 @@ MEDIA QUERIES
     .banner {
 
         &__media {
+            max-width: 100%;
             margin-top: 10px;
         }
     }
@@ -105,6 +121,14 @@ MEDIA QUERIES
         &__content {
             margin-bottom: 30px;
         }
+    }
+
+    /***********************************
+    FOOTER STYLES
+    ***********************************/
+    .footer-gutter {
+        height: 576px;
+        min-height: 576px;
     }
 
 }/* 767px */
@@ -164,6 +188,11 @@ MEDIA QUERIES
     /***********************************
     FOOTER STYLES
     ***********************************/
+    .footer-gutter {
+        height: 581px;
+        min-height: 581px;
+    }
+
     .footer {
         padding-top: 40px;
 
@@ -178,3 +207,15 @@ MEDIA QUERIES
         }
     } 
 }/* 575px */
+
+@media only screen and (max-width: 430px)  {
+
+    /***********************************
+    FOOTER STYLES
+    ***********************************/
+    .footer-gutter {
+        height: 607px;
+        min-height: 607px;
+    } 
+
+}/* 430px */

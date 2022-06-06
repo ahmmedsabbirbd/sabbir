@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react"; 
 import { Container, Row, Col, Button, Image } from "react-bootstrap";  
 import { getDatabase, ref, onValue, remove, query } from "firebase/database";
+import { motion } from "../../../node_modules/framer-motion/dist/framer-motion.js";
 
 const Blogs = ()=> { 
     const auth = getAuth();
@@ -43,7 +44,21 @@ const Blogs = ()=> {
     }
 
     return (
-        <section className="worked"> 
+        <motion.section 
+            className="worked" 
+            
+            intial= {
+                {width: 0} 
+            }
+
+            animate= {
+                {width: "100%"} 
+            }
+            
+            exit= { 
+                {x: window.innerWidth, transition: { duration: 0.3 }} 
+            } 
+        > 
             <Container >
                 <Row>
                     <Col>
@@ -81,7 +96,7 @@ const Blogs = ()=> {
                     </Col> 
                 </Row>
             </Container>  
-        </section>
+        </motion.section>
     )
 }
 

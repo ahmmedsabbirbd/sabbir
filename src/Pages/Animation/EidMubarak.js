@@ -23,7 +23,7 @@ const EidMubarak = ()=> {
     }
 
     const BackPage =  <>
-        <Button variant="" onClick={()=> navigate("/animation") }>Back</Button>
+        <Button disabled variant="" onClick={()=> navigate("/animation") }>Back</Button>
         <Button variant="" onClick={()=> { setEditSmsEdit(true); setCopyUrl(false); setCopyed(false) } }>Create</Button> 
         {copyUrl && <Button variant="" onClick={()=> { copy(window.location.href); setCopyed(true) }  }> {copyed ? "Copyed" : "Copy" }</Button>}
     </>;

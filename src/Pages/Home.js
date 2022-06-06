@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap"; 
 import { getDatabase, onValue, query, ref, set } from "firebase/database";
+import { motion } from "../../node_modules/framer-motion/dist/framer-motion.js";
 
 const Home = ()=> {
     const auth = getAuth();
@@ -16,25 +17,22 @@ const Home = ()=> {
     const [ addBannerShow, setAddBannerShow ] = useState(false);
 
     useEffect(() => {  
-        //Update Content
-        try {
+        //Update Content  
+        try { 
             onValue(query( ref(db, `/Banner`) ), snapshot => { 
-                
-                const data = snapshot.val(); 
-
-                if( data !== null) {
-                    setBannerTitle(data.title);
-                    setBannerContent(data.content);
-                    setBannerBtn(data.btn);
-                    setBannerImg(data.img);
-                }
+                const data =  snapshot.val(); 
+                setBannerBtn(data.btn); 
+                setBannerImg(data.img);
+                setBannerTitle(data.title);
+                setBannerContent(data.content);
+                setLoading(false); 
             });
-            setLoading(false);
-        } catch (err) {
+        } catch (err) { 
             console.log(err);
-            setError("Some Problem"); 
+            setLoading(false);
+            setError("Some Problem");
         }
-
+        
     }, [ db ]);
 
     const writeToBanner = (e)=> {
@@ -66,43 +64,56 @@ const Home = ()=> {
     addBannerShow ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
 
     return (
-        <section className="banner"> 
-            <Container>
-                <Row className="align-items-center">
-                    <Col md="8">
-                        <div className="banner__content">
-                            <h1 className="title">{ bannerTitle }</h1>  
-                            <div dangerouslySetInnerHTML={ {__html: bannerContent} } ></div>
-                            <div className="btn-group">
-                                <NavLink to="/about" className="btn">{ bannerBtn }</NavLink>
-                                { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addBannerShow && <Button onClick={()=> setAddBannerShow(!addBannerShow) } variant="" >Update Content</Button> }
+        <motion.section 
+            className="banner"
+            intial= {
+                {width: 0} 
+            }
+            animate= {
+                {width: "100%"} 
+            }
+            exit= { 
+                {x: window.innerWidth, transition: { duration: 0.3 }} 
+            } 
+        > 
+            <Container> 
+                    <Row className="align-items-center">
+                        <Col md="8">
+                            <div className="banner__content">
+                                { loading ? <div className="skeleton title"></div> : <h1 className="title">{ bannerTitle }</h1>}
+                                { loading ? <div className="skeleton content"></div> : <div dangerouslySetInnerHTML={ {__html: bannerContent} } ></div>}
+
+                                { loading ? <div className="skeleton btn-group"></div> : <div className="btn-group">
+                                    <NavLink to="/about" className="btn">{ bannerBtn }</NavLink>
+                                    { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addBannerShow && <Button onClick={()=> setAddBannerShow(!addBannerShow) } variant="" >Update Content</Button> }
+                                </div> }
+
+                                {addBannerShow && <>
+                                    <form className="update-content" onSubmit={writeToBanner}>
+                                        <input type="text" value={ bannerTitle } onChange={(e) => setBannerTitle(e.target.value)} />  
+                                        <textarea type="text" value={ bannerContent } onChange={(e) => setBannerContent(e.target.value)} /> 
+                                        <input type="text" value={ bannerBtn } onChange={(e) => setBannerBtn(e.target.value)} />  
+                                        <input type="text" value={ bannerImg } onChange={(e) => setBannerImg(e.target.value)} />  
+
+                                        {error && <p className="errror">{error}</p>}
+                                        <div className="btn-group">
+                                            <Button disabled={ loading } type="submit" variant="" >Update Content</Button> 
+                                            <Button onClick={()=> setAddBannerShow(false) } variant="" >Cancel</Button>
+                                        </div>
+                                    </form> 
+                                </>}
                             </div>
+                        </Col>
 
-                            {addBannerShow && <>
-                                <form className="update-content" onSubmit={writeToBanner}>
-                                    <input type="text" value={ bannerTitle } onChange={(e) => setBannerTitle(e.target.value)} />  
-                                    <textarea type="text" value={ bannerContent } onChange={(e) => setBannerContent(e.target.value)} /> 
-                                    <input type="text" value={ bannerBtn } onChange={(e) => setBannerBtn(e.target.value)} />  
-                                    <input type="text" value={ bannerImg } onChange={(e) => setBannerImg(e.target.value)} />  
-
-                                    {error && <p className="errror">{error}</p>}
-                                    <div className="btn-group">
-                                        <Button disabled={ loading } type="submit" variant="" >Update Content</Button> 
-                                        <Button onClick={()=> setAddBannerShow(false) } variant="" >Cancel</Button>
-                                    </div>
-                                </form> 
-                            </>}
-                        </div>
-                    </Col>
-
-                    <Col md="4">
-                        <div className="banner__media">
-                            <Image src={ bannerImg } alt={ bannerTitle } fluid />
-                        </div>
-                    </Col>
-                </Row>
+                        <Col md="4">
+                            { loading ? <div className="skeleton banner__media"></div> :  <div className="banner__media">
+                                    <Image src={ bannerImg } alt={ bannerTitle } fluid /> 
+                                </div> 
+                            }
+                        </Col>
+                    </Row> 
             </Container> 
-        </section>
+        </motion.section>
     )
 }
 

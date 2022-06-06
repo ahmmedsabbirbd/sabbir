@@ -6,7 +6,7 @@ const AnimationItem = (props)=> {
     
     return ( 
         <Col lg="4" sm="6">
-            <NavLink className="animation-item" to={url} >
+            <NavLink className="animation-item" to={url} target="_blank" >
                 <h3 className="title" >{title}</h3>
                 <p>{description}</p>
             </NavLink>
