@@ -19,21 +19,17 @@ const About = ()=> {
         //Update Content
         try {
             onValue(query( ref(db, `/About`) ), snapshot => { 
-                
-                const data = snapshot.val(); 
-
-                if( data !== null) {
-                    setAboutImg(data.img);
-                    setAboutTitle(data.title);
-                    setAboutContent(data.content);
-                }
+                const data = snapshot.val();  
+                setAboutImg(data.img);
+                setAboutTitle(data.title);
+                setAboutContent(data.content);
+                setLoading(false); 
             });
-            setLoading(false);
         } catch (err) {
             console.log(err);
+            setLoading(false);
             setError("Some Problem"); 
         }
-
     }, [ db ]);
 
     const writeToAbout = (e)=> {
@@ -79,11 +75,13 @@ const About = ()=> {
                 <Row className="align-items-center">
                     <Col md='6'>
                         <div className="about__content">
-                            <h1 className="title">{ aboutTitle }</h1> 
-                            <div dangerouslySetInnerHTML={ {__html: aboutContent} } ></div>
-                            
-                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addAboutShow && <Button onClick={()=> setAddAboutShow(!addAboutShow) } variant="" >Update Content</Button> }
+                            { loading ? <div className="skeleton title"></div> : <h1 className="title">{ aboutTitle }</h1>} 
+                            { loading ? <div className="skeleton a-content"></div> : <div dangerouslySetInnerHTML={ {__html: aboutContent} } ></div>}
 
+                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addAboutShow && (
+                                loading ? <div className="skeleton a-btn btn"></div> : <Button onClick={()=> setAddAboutShow(!addAboutShow) } variant="" >Update Content</Button> 
+                            )}
+                            
                             {addAboutShow && <>
                                 <form className="update-content" onSubmit={writeToAbout}>
                                     <input type="text" value={ aboutTitle } onChange={(e) => setAboutTitle(e.target.value)} />  
@@ -101,9 +99,10 @@ const About = ()=> {
                     </Col>
 
                     <Col md='6'>
-                        <div className="about__media">
-                            <Image src={ aboutImg } alt={ aboutTitle } fluid/>
-                        </div> 
+                        { loading ? <div className="skeleton about__media"></div> :  <div className="about__media">
+                                <Image src={ aboutImg } alt={ aboutTitle } fluid/>
+                            </div> 
+                        }
                     </Col>
                 </Row>
             </Container>  

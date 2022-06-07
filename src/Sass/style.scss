@@ -608,6 +608,18 @@ ABOUT STYLES
 
     &__content {
         position: relative;
+
+        .title {
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            margin-top: 5px;
+        }
+    }
+
+    &__media {
+        max-width: 560px;
     }
 }
 
@@ -619,6 +631,7 @@ ABOUT STYLES
         .title {
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 5px;
         }
 
         .skill__items {
@@ -744,14 +757,56 @@ SKELETON STYLES
     &.content {
         height: 70px;
     }
+
+    &.a-content {
+        height: 90px;
+    }
     
     &.btn-group {
         height: 48px;
         width: 318px;
     }
 
+    &.a-btn {
+        height: 48px;
+        width: 184px;
+    }
+    
+    &.btn {
+        width: 94px;
+        height: 48px;
+    }
+
     &.banner__media {
         height: 363px;
+    }
+
+    &.s-item {
+        align-items: center;
+        background: inherit;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        .img {
+            width: 70px;
+            height: 70px;
+            background: #313131;
+            @include border-radius(20px);
+        }
+
+        span {
+            width: 70px;
+            height: 20px;
+            display: block;
+            margin-top: 5px;
+            background: #313131;
+            @include border-radius(20px);
+        }
+    }
+
+    &.about__media {
+        height: 420px;
     }
 }
 /***********************************

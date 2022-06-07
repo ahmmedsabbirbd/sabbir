@@ -25,14 +25,12 @@ const Skill = ()=> {
                 setSkillImtem([]);
                 
                 const data = snapshot.val();
-                
-                if( data !== null) {
-                    Object.values(data).map(work => setSkillImtem(oldArray => [...oldArray, work]) );
-                }
+                Object.values(data).map(work => setSkillImtem(oldArray => [...oldArray, work]) );
+                setLoading(false);
             });
-            setLoading(false);
         } catch (err) {
             console.log(err);
+            setLoading(false);
             setError("Some Problem"); 
         }
 
@@ -41,13 +39,10 @@ const Skill = ()=> {
             onValue(query( ref(db, `/SkillContent`) ), snapshot => { 
                 
                 const data = snapshot.val(); 
-
-                if( data !== null) {
-                    setSkillContentTitle(data.title);
-                    setSkillContentDescription(data.description);
-                }
+                setSkillContentTitle(data.title);
+                setSkillContentDescription(data.description);
+                setLoading(false);
             });
-            setLoading(false);
         } catch (err) {
             console.log(err);
             setError("Some Problem"); 
@@ -109,7 +104,13 @@ const Skill = ()=> {
         remove(ref(db, `/skillItem/${uid}`)); 
     }
 
-    //  ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
+    const fakeSskilledItem = (<li className="skeleton s-item">
+        <div className="img"></div>
+        <span></span>
+        { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <div className="skeleton btn"></div> }
+    </li>);
+
+    addSkillContenShow || addSkillShow ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
 
     return (
         <motion.section className="skill" intial= {
@@ -126,10 +127,12 @@ const Skill = ()=> {
                 <Row>
                     <Col>
                         <div className="skill__content text-center">
-                            <h2 className="title">{ skillContentTitle }</h2>
-                            <p>{ skillContentDescription }</p>
+                            { loading ? <div className="skeleton title"></div> : <h2 className="title">{ skillContentTitle }</h2>} 
+                            { loading ? <div className="skeleton a-content"></div> : <p>{ skillContentDescription }</p>}
 
-                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addSkillContenShow && <Button onClick={()=> setAddSkillContenShow(!addSkillContenShow) } variant="" >Update Content</Button> }
+                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addSkillContenShow && (
+                                loading ? <div className="skeleton a-btn btn"></div> : <Button onClick={()=> setAddSkillContenShow(!addSkillContenShow) } variant="" >Update Content</Button>
+                            )}
 
                             {addSkillContenShow && <>
                                 <form className="update-content" onSubmit={writeToSkillContentAdd}>
@@ -145,14 +148,21 @@ const Skill = ()=> {
                             </>}
                             
                             <ul className="list-inline skill__items">
-                                {skillImtem.length > 0 && skillImtem.map((skill, index)=> (
-                                    <li key={ index } className="d-inline-flex flex-column justify-content-center align-items-center"><Image alt="css" src={ skill.image } fluid />{ skill.title } { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
-                                    <Button variant="danger" onClick={ ()=> handleDelete(skill.uid) } >Delete</Button> 
+                                { loading ? Array(8).fill(fakeSskilledItem) : ( skillImtem.length > 0 && skillImtem.map((skill, index)=> (
+                                    <li
+                                        key={ index } 
+                                        className="d-inline-flex flex-column justify-content-center align-items-center"
+                                        >
+                                        <Image alt="css" src={ skill.image } fluid />
+                                        { skill.title } { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <> 
+                                        <Button variant="danger" onClick={ ()=> handleDelete(skill.uid) } >Delete</Button> 
                                     </>}</li>
-                                ))}
+                                )))}
                             </ul>
-
-                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addSkillShow && <Button onClick={()=> setAddSkillShow(!addSkillShow)} variant="" >Add Skill</Button> }
+                            
+                            { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && !addSkillShow && (
+                               loading ? <div className="skeleton a-btn btn"></div> : <Button onClick={()=> setAddSkillShow(!addSkillShow)} variant="" >Add Skill</Button>
+                            )}
 
                             {addSkillShow && <>
                                 <form className="add-skill" onSubmit={writeToSkillItemAdd}>
