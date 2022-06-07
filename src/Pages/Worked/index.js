@@ -1,3 +1,4 @@
+import Skeleton from "../../Skeleton";
 import AddWorked from "./AddWorked";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
@@ -20,13 +21,10 @@ const Blogs = ()=> {
             onValue(query( ref(db, `/worked`) ), snapshot => {
                 setWorked([]);
                 
-                const data = snapshot.val(); 
-                
-                if( data !== null) {
-                    Object.values(data).map(work => setWorked(oldArray => [...oldArray, work]) );
-                }
+                const data = snapshot.val();
+                Object.values(data).map(work => setWorked(oldArray => [...oldArray, work]) );
+                setLoading(false);
             });
-            setLoading(false);
         } catch (err) {
             console.log(err); 
             setLoading(true);
@@ -71,10 +69,10 @@ const Blogs = ()=> {
                     </Col>
                 </Row>
 
-                <Row className="mb-30"> 
-                    {Searchworked.length > 0 && Searchworked.map((work, index)=> (<Col md="6" key={ index }>
+                <Row className="mb-30">
+                    { loading ? <Skeleton type="fakeWorkItem" /> : ( Searchworked.length > 0 && Searchworked.map((work, index)=> (<Col md="6" key={ index }>
                         <article className="worked-post">
-                            <Link  to={ work.title } state={ work } />
+                            <Link  to={ work.uid } />
                             {work.image &&
                                 <div className="media d-flex align-items-center justify-content-center">
                                     <Image src={ work.image } alt={ work.title } fluid />
@@ -88,7 +86,7 @@ const Blogs = ()=> {
                         </article>
 
                         </Col>
-                    ))}
+                    )))}
                     
                     <Col>
                         {!loading && Searchworked.length === 0 && <div>Data not found</div> }

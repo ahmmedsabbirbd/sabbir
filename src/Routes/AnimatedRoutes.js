@@ -22,7 +22,7 @@ const AnimatedRoutes = ()=> {
                 <Route path="*" element={ <Error /> } />
                 <Route path="/about" element={ <About /> } />
                 <Route path="/worked" element={ <Worked /> } />
-                <Route path="/worked/:title" element={ <SingleWorked /> } />
+                <Route path="/worked/:uid" element={ <SingleWorked /> } />
                 <Route path="/contact" element={ <Contact /> } />
                 <Route path="/animation" element={ <Animation /> } />  
                 <Route path="/wp-admin" element={ <Login /> } />

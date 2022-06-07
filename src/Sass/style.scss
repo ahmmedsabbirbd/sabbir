@@ -804,6 +804,53 @@ SKELETON STYLES
             @include border-radius(20px);
         }
     }
+    
+    &.s-worked-post {
+        background: inherit;
+        margin-bottom: 30px;
+        
+        .media {
+            height: 300px;
+            margin-bottom: 10px;
+            background: #313131;
+            @include border-radius(20px);
+        }
+
+        .title {
+            width: 100%;
+            height: 46px;
+            background: #313131;
+            margin-bottom: 10px;
+            @include border-radius(20px);
+        }
+    }
+
+    &.s-single-worked-post {
+        background: inherit; 
+        
+        .media {
+            height: 400px;
+            margin-bottom: 10px;
+            background: #313131;
+            @include border-radius(20px);
+        }
+
+        .title {
+            width: 100%;
+            height: 46px;
+            background: #313131;
+            margin-bottom: 10px;
+            @include border-radius(20px);
+        }
+
+        .content {
+            width: 100%;
+            height: 500px;
+            background: #313131; 
+            margin-bottom: 10px;
+            @include border-radius(20px);
+        }
+    }
 
     &.about__media {
         height: 420px;

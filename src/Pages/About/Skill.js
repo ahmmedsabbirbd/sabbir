@@ -1,10 +1,10 @@
 import { uid } from "uid";
+import Skeleton from "../../Skeleton/";
 import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { getDatabase, ref, onValue, remove, query, set } from "firebase/database";
 import { motion } from "../../../node_modules/framer-motion/dist/framer-motion.js";
-
 
 const Skill = ()=> {
     const auth = getAuth();
@@ -104,12 +104,6 @@ const Skill = ()=> {
         remove(ref(db, `/skillItem/${uid}`)); 
     }
 
-    const fakeSskilledItem = (<li className="skeleton s-item">
-        <div className="img"></div>
-        <span></span>
-        { ( auth.lastNotifiedUid === "jZGXrap732aDZLOBoG2SyjOzK252" ) && <div className="skeleton btn"></div> }
-    </li>);
-
     addSkillContenShow || addSkillShow ? document.body.classList.add("fake-overly") : document.body.classList.remove("fake-overly");
 
     return (
@@ -148,7 +142,7 @@ const Skill = ()=> {
                             </>}
                             
                             <ul className="list-inline skill__items">
-                                { loading ? Array(8).fill(fakeSskilledItem) : ( skillImtem.length > 0 && skillImtem.map((skill, index)=> (
+                                { loading ? <Skeleton type="fakeSkilledItem" /> : ( skillImtem.length > 0 && skillImtem.map((skill, index)=> (
                                     <li
                                         key={ index } 
                                         className="d-inline-flex flex-column justify-content-center align-items-center"
